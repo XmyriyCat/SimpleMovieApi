@@ -11,6 +11,9 @@ public class Program
 
         builder.Services.AddApplication();
         
+        builder.Services.AddControllers();
+        builder.Services.AddEndpointsApiExplorer();
+        
         // Add services to the container.
         builder.Services.AddAuthorization();
 
@@ -28,6 +31,8 @@ public class Program
         app.UseHttpsRedirection();
 
         app.UseAuthorization();
+        
+        app.MapControllers();
 
         app.Run();
     }
