@@ -1,3 +1,4 @@
+using Movies.Api.Mapping;
 using Movies.Application;
 using Movies.Application.Database;
 
@@ -33,6 +34,8 @@ public static class Program
         app.UseHttpsRedirection();
 
         app.UseAuthorization();
+
+        app.UseMiddleware<ValidationMappingMiddleware>();
 
         app.MapControllers();
 
