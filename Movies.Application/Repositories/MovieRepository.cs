@@ -136,7 +136,7 @@ public class MovieRepository : IMovieRepository
 
         var result = await connection.ExecuteAsync(
             new CommandDefinition("""
-                                  update movies set slug = @Slug, title = @Title, yearofrelease = @YearOfRelease 
+                                  update movies set slug = @Slug, title = @Title, yearofrelease = @YearOfRelease where id = @Id
                                   """, movie, cancellationToken: token));
 
         transaction.Commit();
