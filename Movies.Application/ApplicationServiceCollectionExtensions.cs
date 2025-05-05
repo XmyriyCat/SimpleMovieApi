@@ -14,6 +14,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddSingleton<IMovieRepository, MovieRepository>();
         services.AddSingleton<IRatingRepository, RatingRepository>();
         services.AddSingleton<IMovieService, MovieService>();
+        services.AddSingleton<IRatingService, RatingService>();
         services.AddFluentValidators();
 
         return services;

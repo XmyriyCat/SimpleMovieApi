@@ -113,7 +113,7 @@ public class MovieRepository : IMovieRepository
             new CommandDefinition("""
                                   select m.*,
                                          string_agg(distinct g.name, ',') as genres,
-                                         round(avg(r.rating), 1) as ratings,
+                                         round(avg(r.rating), 1) as rating,
                                          myr.rating as userrating
                                   from movies m
                                   left join genres g on m.id = g.movieId
@@ -128,7 +128,7 @@ public class MovieRepository : IMovieRepository
             Id = x.id,
             Title = x.title,
             Rating = (float?)x.rating,
-            UserRating = (int?)x.userRating,
+            UserRating = (int?)x.userrating,
             YearOfRelease = x.yearofrelease,
             Genres = Enumerable.ToList(x.genres.Split(','))
         });
