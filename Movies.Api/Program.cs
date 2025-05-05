@@ -33,8 +33,12 @@ public static class Program
                 ValidateAudience = true,
             };
         });
-        
-        builder.Services.AddAuthorization();
+
+        builder.Services.AddAuthorization(x =>
+        {
+            x.AddPolicy(AuthConstants.AdminUserPolicyName,
+                p => p.RequireClaim(AuthConstants.AdminUserClaimName, "true"));
+        });
 
         builder.Services.AddApplication();
         builder.Services.AddDatabase(config["Database:ConnectionString"]!);
