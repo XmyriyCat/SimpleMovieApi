@@ -10,6 +10,10 @@ public class Movie
 
     public string Slug => GenerateSlug();
 
+    public float? Rating { get; set; }
+
+    public int? UserRating { get; set; }
+
     public required int YearOfRelease { get; set; }
 
     public required List<string> Genres { get; init; } = [];
