@@ -60,8 +60,10 @@ public class MoviesController : ControllerBase
         
         var movies = await _movieService.GetAllAsync(options, token);
 
-        var moviesResponse = movies.MapToResponse();
-
+        var movieCount = await _movieService.GetCountAsync(request.Title, request.Year, token);
+        
+        var moviesResponse = movies.MapToResponse(request.Page, request.PageSize, movieCount);
+        
         return Ok(moviesResponse);
     }
 
